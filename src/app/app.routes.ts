@@ -3,6 +3,7 @@ import { PersonalHomeComponent } from './auth/personal/personal-home/personal-ho
 import { CompanyHomeComponent } from './auth/company/company-home/company-home.component';
 import { RequestListComponent } from './auth/personal/request-list/request-list.component';
 import { RequestConfirmationComponent } from './auth/personal/request-confirmation/request-confirmation.component';
+import { CvSummaryComponent } from './auth/personal/cv-summary/cv-summary.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,10 @@ export const routes: Routes = [
           {
             path: 'request-list',
             component: RequestListComponent,
+          },
+          {
+            path: 'summary',
+            component: CvSummaryComponent,
           },
           {
             path: 'request-confirmation/:id',

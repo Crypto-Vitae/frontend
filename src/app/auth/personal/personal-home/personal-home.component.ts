@@ -31,7 +31,7 @@ export class PersonalHomeComponent implements OnInit {
       name: 'Mi CV',
       icon: 'pi-search',
       active: false,
-      route: '/app/explore-projects',
+      route: '/auth/personal/summary',
     },
   ];
 
