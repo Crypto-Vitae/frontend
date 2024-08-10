@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { PinataService } from '../../../../services/pinata.service';
@@ -10,13 +10,13 @@ import { PinataService } from '../../../../services/pinata.service';
   standalone: true,
   imports: [ButtonModule, CommonModule, RouterModule, CardModule],
   templateUrl: './companies.component.html',
-  styleUrl: './companies.component.css'
+  styleUrl: './companies.component.css',
 })
 export class CompaniesComponent {
   imageFile: File | null = null;
   tokenUri: string | null = null;
 
-  constructor(private pinataService: PinataService) {}
+  constructor(private router: Router, private pinataService: PinataService) {}
 
   onImageSelected(event: any) {
     this.imageFile = event.target.files[0];
@@ -35,5 +35,9 @@ export class CompaniesComponent {
     } else {
       console.error('No image file selected.');
     }
+  }
+  
+  goToCompanyInfo() {
+    this.router.navigate(['/auth/company/company-info']);
   }
 }
