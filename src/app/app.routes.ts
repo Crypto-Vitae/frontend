@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { PersonalHomeComponent } from './auth/personal/personal-home/personal-home.component';
 import { CompanyHomeComponent } from './auth/company/company-home/company-home.component';
 import { RequestListComponent } from './auth/personal/request-list/request-list.component';
+import { RequestConfirmationComponent } from './auth/personal/request-confirmation/request-confirmation.component';
 
 export const routes: Routes = [
   {
@@ -10,11 +11,18 @@ export const routes: Routes = [
       {
         path: 'personal',
         component: PersonalHomeComponent,
+        children: [
+          {
+            path: 'request-list',
+            component: RequestListComponent,
+          },
+          {
+            path: 'request-confirmation/:id',
+            component: RequestConfirmationComponent,
+          },
+        ],
       },
-      {
-        path: 'request-list',
-        component: RequestListComponent,
-      },
+
       {
         path: 'company',
         component: CompanyHomeComponent,
