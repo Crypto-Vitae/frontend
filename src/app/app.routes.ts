@@ -3,6 +3,7 @@ import { LandingPageComponent } from './landing/landing-page/landing-page.compon
 import { LoginComponent } from './landing/login/login.component';
 import { PersonalHomeComponent } from './auth/personal/personal-home/personal-home.component';
 import { CompanyHomeComponent } from './auth/company/company-home/company-home.component';
+import { CompaniesComponent } from './auth/company/companies/companies.component';
 
 export const routes: Routes = [
     {
@@ -22,7 +23,13 @@ export const routes: Routes = [
             },
             {
                 path: 'company',
-                component: CompanyHomeComponent
+                component: CompanyHomeComponent,
+                children: [
+                    {
+                        path: 'my-companies',
+                        component: CompaniesComponent
+                    },
+                ]
             }
         ]
     }
