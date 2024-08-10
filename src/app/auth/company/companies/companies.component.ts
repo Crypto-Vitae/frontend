@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
-import { PinataService } from '../../../../services/pinata.service';
+import { PinataService } from '../../../services/pinata.service';
 
 @Component({
   selector: 'app-companies',
