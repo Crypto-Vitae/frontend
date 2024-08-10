@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 import { PersonalHomeComponent } from './auth/personal/personal-home/personal-home.component';
 import { CompanyHomeComponent } from './auth/company/company-home/company-home.component';
-import { RequestListComponent } from './auth/personal/request-list/request-list.component';
-import { RequestConfirmationComponent } from './auth/personal/request-confirmation/request-confirmation.component';
-import { CvSummaryComponent } from './auth/personal/cv-summary/cv-summary.component';
 import { LandingPageComponent } from './landing/landing-page/landing-page.component';
 import { LoginComponent } from './landing/login/login.component';
+import { RequestConfirmationComponent } from './auth/personal/request-confirmation/request-confirmation.component';
+import { CvSummaryComponent } from './auth/personal/cv-summary/cv-summary.component';
+import { RequestListComponent } from './auth/personal/request-list/request-list.component';
+import { CompaniesComponent } from './auth/company/companies/companies.component';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,12 @@ export const routes: Routes = [
       {
         path: 'company',
         component: CompanyHomeComponent,
+        children: [
+            {
+                path: 'my-companies',
+                component: CompaniesComponent
+            },
+        ]
       },
     ],
   },
