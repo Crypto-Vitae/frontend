@@ -52,10 +52,28 @@ export class ReviewService {
     private metaMaskService: MetaMaskService
   ) {}
 
+  getContractAddress(): string {
+    const chainId = this.metaMaskService.chainId;
+    const chainIds = environment.chainIds;
+    switch (chainId) {
+      case chainIds.arbitrum:
+        return environment.contractAddresses.cryptoVitaeReviewSBT.arbitrum;
+      case chainIds.scroll:
+        return environment.contractAddresses.cryptoVitaeReviewSBT.scroll;
+      case chainIds.avalanche:
+        return environment.contractAddresses.cryptoVitaeReviewSBT.avalanche;
+      case chainIds.ether:
+        return environment.contractAddresses.cryptoVitaeReviewSBT.ether;
+      default:
+        console.error('Chain ID not supported:', chainId);
+        return '';
+    }
+  }
+
   async getReviews(): Promise<void> {
     const contract = await this.blockchainService.getContractInstance(
       CryptoVitaeReviewSBTAbi,
-      environment.contractAddresses.cryptoVitaeReviewSBT.ether
+      this.getContractAddress()
     );
     if (!contract) {
       console.error('No contract found');
@@ -115,7 +133,7 @@ export class ReviewService {
   async getReviewsByCompany() {
     const contract = await this.blockchainService.getContractInstance(
       CryptoVitaeReviewSBTAbi,
-      environment.contractAddresses.cryptoVitaeReviewSBT.ether
+      this.getContractAddress()
     );
     if (!contract) {
       console.error('No contract found');
@@ -182,7 +200,7 @@ export class ReviewService {
 
           const contract = await this.blockchainService.getContractInstance(
             CryptoVitaeReviewSBTAbi,
-            environment.contractAddresses.cryptoVitaeReviewSBT.ether
+            this.getContractAddress()
           );
 
           if (contract) {
@@ -208,7 +226,7 @@ export class ReviewService {
   async confirmReview(tokenId: number) {
     const contract = await this.blockchainService.getContractInstance(
       CryptoVitaeReviewSBTAbi,
-      environment.contractAddresses.cryptoVitaeReviewSBT.ether
+      this.getContractAddress()
     );
 
     if (!contract) {
