@@ -20,6 +20,7 @@ export class GenerateLinkComponent implements OnInit {
   }
 
   generateLink(): void {
-    this.link = `http://localhost:4200/auth/company/my-companies/${this.address}`;
+    const baseUrl = window.location.origin;
+    this.link = `${baseUrl}/auth/company/my-companies/${this.address}`;
   }
 }
